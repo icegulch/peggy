@@ -9,7 +9,7 @@
     {% if current_title %}{{ current_title }} | {% endif %}{{ site.title }}
   {%- endcapture -%}
   <title>{{ page_title }}</title>
-  
+
   <meta name="description" content="{{ seo_description | default: site.seo_description }}">
   <meta name="generator" content="{{ eleventy.generator }}">
 
@@ -18,7 +18,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url }}">
 
-  <link rel="stylesheet" href="/css/critical.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/styles.css">
 
   {% if pageStyles %}
     {% for style in pageStyles %}
@@ -29,9 +33,15 @@
 <body>
   {% include "partials/svg-sprite.liquid" %}
 
+  {% include "partials/header.liquid" %}
+
   <main>
     {{ content }}
   </main>
+
+  {% include "partials/footer.liquid" %}
+
+  <script src="js/main.js"></script>
 
 </body>
 </html>
